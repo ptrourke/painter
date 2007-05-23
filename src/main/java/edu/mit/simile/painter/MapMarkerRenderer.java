@@ -28,12 +28,12 @@ public class MapMarkerRenderer implements IRenderer {
     	 * Gather the parameters
     	 */
         String shape = PainterUtilities.getString(parameters, "shape", "square");
-        float bodyWidth = PainterUtilities.getFloat(parameters, "width", 20.0f, 1.0f, Float.MAX_VALUE);
-        float bodyHeight = PainterUtilities.getFloat(parameters, "height", 20.0f, 1.0f, Float.MAX_VALUE);
+        float bodyWidth = PainterUtilities.getFloat(parameters, "width", 20.0f, 1.0f, 100f /* Float.MAX_VALUE */);
+        float bodyHeight = PainterUtilities.getFloat(parameters, "height", 20.0f, 1.0f, 100f /* Float.MAX_VALUE */);
         
         boolean pin = PainterUtilities.getBoolean(parameters, "pin", true);
-        float pinWidth = PainterUtilities.getFloat(parameters, "pinWidth", 5.0f, 1.0f, Float.MAX_VALUE);
-        float pinHeight = PainterUtilities.getFloat(parameters, "pinHeight", 7.0f, 1.0f, Float.MAX_VALUE);
+        float pinWidth = PainterUtilities.getFloat(parameters, "pinWidth", 5.0f, 1.0f, 100f /* Float.MAX_VALUE */);
+        float pinHeight = PainterUtilities.getFloat(parameters, "pinHeight", 7.0f, 1.0f, 100f /* Float.MAX_VALUE */);
         
         Color backgroundColor = PainterUtilities.getColor(parameters, "background", Color.WHITE);
         Color foregroundColor = PainterUtilities.getColor(parameters, "foreground", Color.BLACK);
