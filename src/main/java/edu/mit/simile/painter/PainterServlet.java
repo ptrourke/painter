@@ -35,6 +35,8 @@ public class PainterServlet extends HttpServlet {
         	String renderer = PainterUtilities.getString(parameters, "renderer", "map-marker");
         	if ("map-marker".equalsIgnoreCase(renderer)) {
         		image = new MapMarkerRenderer().render(parameters);
+        	} else if ("map-marker-shadow".equalsIgnoreCase(renderer)) {
+            	image = new MapMarkerShadowRenderer().render(parameters);
         	}
         	
         	if (image != null) {
@@ -48,6 +50,7 @@ public class PainterServlet extends HttpServlet {
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             s_logger.error(e);
+            //e.printStackTrace();
         }
     }
 }

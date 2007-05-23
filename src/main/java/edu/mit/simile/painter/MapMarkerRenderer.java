@@ -10,10 +10,8 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.LineMetrics;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.Map;
@@ -66,9 +64,9 @@ public class MapMarkerRenderer implements IRenderer {
         try {
             GeneralPath body = null;
             if ("circle".equals(shape)) {
-                body = makeCircleShape(bodyBounds);
+                body = MapMarkerUtilities.makeCircleShape(bodyBounds);
             } else {
-                body = makeSquareShape(bodyBounds);
+                body = MapMarkerUtilities.makeSquareShape(bodyBounds);
             }
 
             /*
@@ -145,26 +143,5 @@ public class MapMarkerRenderer implements IRenderer {
             g2d.dispose();
         }
         return image;
-    }
-        
-    private GeneralPath makeSquareShape(Rectangle2D shapeBounds) throws Exception {
-        double cornerRadius = Math.max(shapeBounds.getWidth() / 2, shapeBounds.getHeight() / 2);
-        return new GeneralPath(new RoundRectangle2D.Double(
-    		shapeBounds.getMinX(),
-    		shapeBounds.getMinY(),
-            shapeBounds.getWidth(),
-            shapeBounds.getHeight(),
-            cornerRadius, 
-            cornerRadius
-        ));
-    }
-    
-    private GeneralPath makeCircleShape(Rectangle2D shapeBounds) throws Exception {
-        return new GeneralPath(new Ellipse2D.Double(
-    		shapeBounds.getMinX(),
-    		shapeBounds.getMinY(),
-            shapeBounds.getWidth(),
-            shapeBounds.getHeight()
-        ));
     }
 }
