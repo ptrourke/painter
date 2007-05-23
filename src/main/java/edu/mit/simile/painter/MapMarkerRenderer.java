@@ -104,7 +104,7 @@ public class MapMarkerRenderer implements IRenderer {
             /*
              * Draw image
              */
-            if (iconURL.length() > 0) {
+            if (iconURL != null && iconURL.length() > 0) {
             	try {
             		BufferedImage icon = ImageIO.read(new URL(iconURL));
             		
