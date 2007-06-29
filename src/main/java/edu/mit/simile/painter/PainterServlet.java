@@ -37,6 +37,8 @@ public class PainterServlet extends HttpServlet {
         		image = new MapMarkerRenderer().render(parameters);
         	} else if ("map-marker-shadow".equalsIgnoreCase(renderer)) {
             	image = new MapMarkerShadowRenderer().render(parameters);
+            } else if ("map-pin".equalsIgnoreCase(renderer)) {
+                image = new MapPinRenderer().render(parameters);
         	}
         	
         	if (image != null) {
