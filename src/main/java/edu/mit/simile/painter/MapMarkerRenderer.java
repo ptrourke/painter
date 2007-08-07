@@ -43,7 +43,7 @@ public class MapMarkerRenderer implements IRenderer {
         Font font = PainterUtilities.getFont(parameters, "font", s_font);
         
         String iconURL = PainterUtilities.getString(parameters, "icon", null);
-        String iconFit = PainterUtilities.getString(parameters, "iconFit", "none");
+        String iconFit = PainterUtilities.getString(parameters, "iconFit", "smaller");
         float iconScale = PainterUtilities.getFloat(parameters, "iconScale", 1.0f, Float.MIN_VALUE, Float.MAX_VALUE);
         float iconX = PainterUtilities.getFloat(parameters, "iconX", 0.0f, Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY);
         float iconY = PainterUtilities.getFloat(parameters, "iconY", 0.0f, Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY);
@@ -116,8 +116,14 @@ public class MapMarkerRenderer implements IRenderer {
                     } else if (iconFit.equalsIgnoreCase("height")) {
                         float scale = (float) bodyBounds.getHeight() / icon.getHeight();
                         g2d2.scale(scale, scale);
-                    } else if (iconFit.equals("both")) {
+                    } else if (iconFit.equalsIgnoreCase("both") || iconFit.equalsIgnoreCase("larger")) {
                         float scale = (float) Math.min(
+                                bodyBounds.getHeight() / icon.getHeight(),
+                                bodyBounds.getWidth() / icon.getWidth());
+                        
+                        g2d2.scale(scale, scale);
+                    } else if (iconFit.equalsIgnoreCase("smaller")) {
+                        float scale = (float) Math.max(
                                 bodyBounds.getHeight() / icon.getHeight(),
                                 bodyBounds.getWidth() / icon.getWidth());
                         
