@@ -43,6 +43,7 @@ public class MapMarkerRenderer implements IRenderer {
         Font font = PainterUtilities.getFont(parameters, "font", s_font);
         
         String iconURL = PainterUtilities.getString(parameters, "icon", null);
+        String iconFit = PainterUtilities.getString(parameters, "iconFit", "none");
         float iconScale = PainterUtilities.getFloat(parameters, "iconScale", 1.0f, Float.MIN_VALUE, Float.MAX_VALUE);
         float iconX = PainterUtilities.getFloat(parameters, "iconX", 0.0f, Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY);
         float iconY = PainterUtilities.getFloat(parameters, "iconY", 0.0f, Float.NEGATIVE_INFINITY, Float.POSITIVE_INFINITY);
@@ -108,6 +109,21 @@ public class MapMarkerRenderer implements IRenderer {
             		
             		Graphics2D g2d2 = (Graphics2D) g2d.create();
             		g2d2.translate(bodyBounds.getCenterX() + iconX, bodyBounds.getCenterY() + iconY);
+                    
+                    if (iconFit.equalsIgnoreCase("width")) {
+                        float scale = (float) bodyBounds.getWidth() / icon.getWidth();
+                        g2d2.scale(scale, scale);
+                    } else if (iconFit.equalsIgnoreCase("height")) {
+                        float scale = (float) bodyBounds.getHeight() / icon.getHeight();
+                        g2d2.scale(scale, scale);
+                    } else if (iconFit.equals("both")) {
+                        float scale = (float) Math.min(
+                                bodyBounds.getHeight() / icon.getHeight(),
+                                bodyBounds.getWidth() / icon.getWidth());
+                        
+                        g2d2.scale(scale, scale);
+                    }
+                    
             		g2d2.scale(iconScale, iconScale);
             		g2d2.drawImage(icon, (int) (- icon.getWidth()) / 2, (int) (- icon.getHeight()) / 2, null);
             	} catch (Exception e) {
