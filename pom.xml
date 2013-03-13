@@ -3,32 +3,15 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
 >
+
   <modelVersion>4.0.0</modelVersion>
-  <groupId>edu.mit.simile</groupId>
-  <artifactId>painter</artifactId>
+  <groupId>org.simileWidgets</groupId>
+  <artifactId>Painter</artifactId>
   <name>SIMILE Painter</name>
   <version>1.0.0</version>
   <description>Painter is a web service for rendering images, such as those to be used as markers on maps.</description> 
-  <url>http://simile.mit.edu/painter/</url>
+  <url>http://www.simile-widgets.org/painter/</url>
   <inceptionYear>2007</inceptionYear>
-
-  <issueManagement>
-    <system>jira</system>
-    <url>http://simile.mit.edu/issues/browse/PAINTER</url>
-  </issueManagement>
-
-  <distributionManagement>
-    <repository>
-      <id>simile.mit.edu</id>
-      <url>scpexe://simile.mit.edu/var/maven</url>
-    </repository>
-  </distributionManagement>
-
-  <scm>
-    <connection>scm:svn:http://simile.mit.edu/repository/painter/trunk/</connection>
-    <developerConnection>scm:svn:http://simile.mit.edu/repository/painter/trunk/</developerConnection>
-    <url>http://simile.mit.edu/viewsvn/painter/trunk/</url>
-  </scm>
 
   <build>
     <plugins>
@@ -39,10 +22,6 @@
           <target>1.5</target>
         </configuration>
       </plugin>    
-	  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-      </plugin>
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>maven-jetty-plugin</artifactId>
@@ -62,83 +41,17 @@
     </plugins>
   </build>
 
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <links>
-            <link>http://java.sun.com/j2ee/1.4/docs/api</link>
-            <link>http://java.sun.com/j2se/1.5.0/docs/api</link>
-            <link>http://jakarta.apache.org/commons/collections/apidocs-COLLECTIONS_3_0/</link>
-            <link>http://jakarta.apache.org/commons/dbcp/apidocs/</link>
-            <link>http://jakarta.apache.org/commons/fileupload/apidocs/</link>
-            <link>http://jakarta.apache.org/commons/httpclient/apidocs/</link>
-            <link>http://jakarta.apache.org/commons/logging/api/</link>
-            <link>http://jakarta.apache.org/commons/pool/apidocs/</link>
-            <link>http://www.junit.org/junit/javadoc/</link>
-            <link>http://logging.apache.org/log4j/docs/api/</link>
-            <link>http://jakarta.apache.org/regexp/apidocs/</link>
-            <link>http://jakarta.apache.org/velocity/api/</link>
-          </links>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <descriptors>
-           <descriptor>src/conf/assembly.xml</descriptor>
-          </descriptors>
-          <finalName>painter-${project.version}</finalName>
-          <appendAssemblyId>false</appendAssemblyId>
-          <workDirectory>target/assembly/work</workDirectory>
-          <tarLongFileMode>error</tarLongFileMode>
-          <outputDirectory>.</outputDirectory>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
-  
-	<repositories>
-	    <repository>
-	        <id>simile.mit.edu</id>
-	        <url>http://simile.mit.edu/maven-proxy</url>
-	    </repository>
-	</repositories>
-
   <dependencies>
-	    <dependency>
-            <groupId>servlets.com</groupId>
-            <artifactId>cos</artifactId>
-            <version>05Nov2002</version>
-        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.4</version>
         </dependency>
-	    
-		<!-- =============== Miscellaneous utilities =============== -->
-	    <dependency>
-	        <groupId>commons-collections</groupId>
-	        <artifactId>commons-collections</artifactId>
-	        <version>3.1</version>
-	    </dependency>
 	    <dependency>
 	        <groupId>commons-lang</groupId>
 	        <artifactId>commons-lang</artifactId>
-	        <version>2.1</version>
-	    </dependency>
-	    <dependency>
-	      <groupId>commons-codec</groupId>
-	      <artifactId>commons-codec</artifactId>
-	      <version>1.3</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>log4j</groupId>
-	        <artifactId>log4j</artifactId>
-	        <version>1.2.13</version>
+	        <version>2.4</version>
 	    </dependency>
   </dependencies>
+
 </project>

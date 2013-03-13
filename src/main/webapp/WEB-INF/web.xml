@@ -8,7 +8,7 @@
 
     <servlet>
         <servlet-name>Painter</servlet-name>
-        <servlet-class>edu.mit.simile.painter.PainterServlet</servlet-class>
+        <servlet-class>org.simileWidgets.painter.PainterServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
