@@ -6,7 +6,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.simileWidgets</groupId>
-  <artifactId>Painter</artifactId>
+  <artifactId>painter</artifactId>
   <name>SIMILE Painter</name>
   <version>1.0.0</version>
   <description>Painter is a web service for rendering images, such as those to be used as markers on maps.</description> 
